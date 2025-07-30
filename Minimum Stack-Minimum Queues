@@ -1,0 +1,20 @@
+Since we know we can add or remove an element from stack and queue in O(1) time.
+Here we will find out how can we find the minimum element from stack or queue in O(1) time.
+
+For this in Stack we can modify our stack like this:
+
+```
+def solve(arr):
+// here is the stack which stores the element in this format [[curr_element, min_element till now]]
+    stack = []
+
+    for i in arr:
+        if not stack:
+//if the stack is empty then the min_element in the stack is this itself
+            stack.append([i, i])
+        else:
+// if there are elements present in this then we have to just check and update the minimum.
+            stack.append([i, min(i, stack[-1][1])])
+
+    return stack
+```
